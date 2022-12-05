@@ -1,4 +1,4 @@
-# day4_1.py
+# day5_1.py
 
 def get_next_elf_pair(filename: str) -> str:
     with open(filename, mode='r') as f:
