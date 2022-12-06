@@ -1,3 +1,4 @@
+# day2_2.py
 from day2_1 import get_next_strategy, calculate_round_score
 
 SCORE_MAPPING = {
