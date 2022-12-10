@@ -55,7 +55,7 @@ def is_tree_visible_from_up_or_down(forest, tree_row_no, tree_position, tree_hei
     return False
 
 
-def count_visible_trees(visibility_map: dict) -> int:
+def count_visible_trees(visibility_map: dict):
     print(list(visibility_map.values()).count(1))
 
 
