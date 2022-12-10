@@ -69,7 +69,7 @@ def calculate_column_scenic_score(forest, tree_row_no, tree_position, my_tree_he
     return up_scenic_score * down_scenic_score
 
 
-def find_highest_score(scenic_map: dict) -> int:
+def find_highest_score(scenic_map: dict):
     print(max(scenic_map.values()))
 
 
