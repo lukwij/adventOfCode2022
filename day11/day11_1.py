@@ -1,10 +1,10 @@
 # day11_1.py
 
 import re
-import numpy
 
 MONKEY_LIST = []
-MONKEY_PRODUCT = None
+MONKEY_PRODUCT_DAY1 = 96577
+MONKEY_PRODUCT_DAY2 = 9699690
 
 
 class Monkey:
@@ -23,18 +23,24 @@ class Monkey:
         self.items = []
 
     def handle_item(self, item, mode):
+        self.activity_counter += 1
         item = self.change_worry_level(item)
-        print(f"new worry level: {item}")
+        # print(f"new worry level: {item}")
         if mode == "day1":
             item = int(item / 3)
+        else:
+            # print(f"item before: {item}")
+            item = item % MONKEY_PRODUCT_DAY2
+            # print(f"item after: {item}")
         test_passed = self.test_item(item)
         self.throw_item(item, mode, test_passed)
-        self.activity_counter += 1
 
     def change_worry_level(self, item):
-        print(f"old worry level: {item}, operation value: {self.operation_value}")
         value = item if self.operation_value == "old" else int(self.operation_value)
+        if self.operation_value == "old":
+            print(f"old worry level: {item}, operation value: {self.operation_value}")
         if self.operation_type == "*":
+            print(f"{item * value}")
             return item * value
         else:
             return item + value
@@ -44,10 +50,6 @@ class Monkey:
         return test_passed
 
     def throw_item(self, item, mode, test_passed):
-        if mode != "day1":
-            print(f"item before: {item}")
-            item = item % MONKEY_PRODUCT
-            print(f"item after: {item}")
         if test_passed:
             MONKEY_LIST[self.true_monkey].items.append(item)
         else:
@@ -87,9 +89,6 @@ def get_monkeys(filename: str):
 
 def do_monkey_business(filename="input.txt", turn_no=20, mode="day1"):
     get_monkeys(filename)
-    global MONKEY_PRODUCT
-    MONKEY_PRODUCT = numpy.prod([monkey.test for monkey in MONKEY_LIST])
-    print(f"monkey product: {MONKEY_PRODUCT}")
     for round_no in range(turn_no):
         for monkey in MONKEY_LIST:
             monkey.take_turn(mode)
