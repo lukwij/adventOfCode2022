@@ -1,4 +1,4 @@
-# day10_2.py
+# day10_1.py
 
 
 def get_instructions(filename: str) -> int:
