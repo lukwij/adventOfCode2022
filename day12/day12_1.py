@@ -54,6 +54,7 @@ def find_way(starting_point):
             break
     return steps_till_end - 1
 
+
 def find_next_step(spot) -> list:
     global width, length
     x = spot[0]
